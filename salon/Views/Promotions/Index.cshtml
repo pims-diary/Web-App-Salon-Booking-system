@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Salon.Models.Promotion>
+
+@{
+    ViewData["Title"] = "Promotions";
+}
+
+<div style="padding:30px; max-width:900px; margin:0 auto;"></div>
+
+    <!-- Success message -->
+@if (TempData["SuccessMessage"] != null)
+{
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+}
+
+  
+
+<div style="padding:30px; max-width:900px; margin:0 auto;">
+
+    <!-- Cute cartoon / banner image -->
+    <div style="text-align:center; margin-bottom:20px;">
+        <!-- Put an actual file called 'promotions-banner.png' in wwwroot/images -->
+        <img src="~/images/Promotion.jpg"
+             alt="Salon promotions"
+             style="max-width:250px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+    </div>
+
+    <h2 style="text-align:center; margin-bottom:5px;">Current Promotions</h2>
+    <p style="text-align:center; color:#666;">Manage the promotions visible to customers.</p>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin:20px 0;">
+        <a asp-controller="Staff" asp-action="Dashboard" class="btn btn-secondary">
+            ← Back to Staff Dashboard
+        </a>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Add New Promotion
+        </a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th style="width:180px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var promo in Model)
+            {
+                <tr>
+                    <td>@promo.Title</td>
+                    <td>@promo.Description</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@promo.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@promo.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

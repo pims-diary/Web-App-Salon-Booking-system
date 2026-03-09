@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "Staff Dashboard";
+}
+
+<div style="padding:30px;">
+    <!-- Top bar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+        <h2 style="margin:0;">Staff Dashboard</h2>
+
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- 3 cards -->
+    <div style="display:flex; gap:30px;">
+        <!-- Manage Product card -->
+        <div style="
+            flex:1;
+            background:#ffe9e9;
+            border-radius:20px;
+            padding:25px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:space-between;
+            box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+            <div style="font-size:60px; margin-bottom:20px;">📦</div>
+            <a asp-controller="Products" asp-action="Index"
+               style="
+                   display:inline-block;
+                   margin-top:10px;
+                   background:#ff5b32;
+                   color:white;
+                   padding:10px 25px;
+                   border-radius:20px;
+                   text-decoration:none;
+                   font-weight:600;">
+                Manage Product
+            </a>
+        </div>
+
+        <!-- Manage Customer card -->
+        <div style="
+            flex:1;
+            background:#e5efff;
+            border-radius:20px;
+            padding:25px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:space-between;
+            box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+            <div style="font-size:60px; margin-bottom:20px;">🧑‍💼</div>
+            <a asp-controller="Customers" asp-action="Index"
+               style="
+                   display:inline-block;
+                   margin-top:10px;
+                   background:#567dff;
+                   color:white;
+                   padding:10px 25px;
+                   border-radius:20px;
+                   text-decoration:none;
+                   font-weight:600;">
+                Manage Customer
+            </a>
+        </div>
+
+        <!-- Promotions card -->
+        <div style="
+    flex:1;
+    background:#ffe9ff;
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+            <div style="font-size:60px; margin-bottom:20px;">📣</div>
+            <a asp-controller="Promotions" asp-action="Index"
+               style="
+            margin-top:10px;
+            background:#ff7fe8;
+            color:white;
+            padding:10px 25px;
+            border-radius:20px;
+            border:none;
+            font-weight:600;
+            text-decoration:none;
+            display:inline-block;">
+                Promotions
+            </a>
+        </div>
+        </div>
+    </div>
+</div>
+

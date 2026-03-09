@@ -1,0 +1,31 @@
+﻿@model Salon.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Staff Login";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Login" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="StaffId" class="form-label"></label>
+        <input asp-for="StaffId" class="form-control" />
+        <span asp-validation-for="StaffId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    <div class="text-danger mt-2">
+        @Html.ValidationSummary(false)
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

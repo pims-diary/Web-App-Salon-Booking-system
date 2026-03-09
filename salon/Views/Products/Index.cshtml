@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Salon.Models.Product>
+
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<div style="padding:30px; max-width:1000px; margin:0 auto;">
+
+    <!-- Optional banner / icon for products -->
+    <div style="text-align:center; margin-bottom:20px;">
+        <!-- If you want, add a Products image: wwwroot/images/products-banner.jpg -->
+        <img src="~/images/SalonLogo.jpg".jpg"
+             alt="Salon products"
+             style="max-width:250px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+    </div>
+
+    <h2 style="text-align:center; margin-bottom:5px;">Manage Products</h2>
+    <p style="text-align:center; color:#666;">Add, edit and delete salon services or retail products.</p>
+
+    <!-- Success message -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin:20px 0;">
+        <a asp-controller="Staff" asp-action="Dashboard" class="btn btn-secondary">
+            ← Back to Staff Dashboard
+        </a>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Add New Product
+        </a>
+    </div>
+
+    <!-- Search form -->
+    <form asp-action="Index" method="get" class="mb-3" style="margin-bottom:20px;">
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                <label class="form-label">Search text (name/description)</label>
+                <input type="text" name="searchText" value="@ViewBag.SearchText" class="form-control" />
+            </div>
+
+            <div class="col-md-3 mb-2">
+                <label class="form-label">Category (contains)</label>
+                <input type="text" name="category" value="@ViewBag.Category" class="form-control" />
+            </div>
+
+            <div class="col-md-2 mb-2">
+                <label class="form-label">From Date</label>
+                <input type="date" name="fromDate" value="@ViewBag.FromDate" class="form-control" />
+            </div>
+
+            <div class="col-md-2 mb-2">
+                <label class="form-label">To Date</label>
+                <input type="date" name="toDate" value="@ViewBag.ToDate" class="form-control" />
+            </div>
+
+            <div class="col-md-2 mb-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2">Search</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+            </div>
+        </div>
+    </form>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th style="width:120px;">Price</th>
+                <th>Created Date</th>
+                <th>Description</th>
+                <th style="width:180px;">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@(item.CreatedDate?.ToString("dd MMM yyyy"))</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="padding:30px; max-width:1000px; margin:0 auto;">
+
+    <!-- Optional banner / icon for products -->
+    <div style="text-align:center; margin-bottom:20px;">
+        <!-- If you want, add a Products image: wwwroot/images/products-banner.jpg -->
+        <img src="~/images/SalonLogo.jpg" .jpg"
+             alt="Salon products"
+             style="max-width:250px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+    </div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Salon Web Application</h1>
+    <p>
+        <a asp-controller="Account" asp-action="Login" class="btn btn-success">
+            Staff Login
+        </a>
+    </p>
+</div>
